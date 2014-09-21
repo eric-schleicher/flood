@@ -29,9 +29,60 @@ require.config({
             deps: ['CSG'],
             exports: 'FLOODCSG'
         },
+        CopyShader: {
+            deps: [
+                'Three'
+            ],
+            exports: 'CopyShader'
+        },
+        HorizontalBlurShader: {
+            deps: [
+                'Three'
+            ],
+            exports: 'HorizontalBlurShader'
+        },
+        VerticalBlurShader: {
+            deps: [
+                'Three'
+            ],
+            exports: 'VerticalBlurShader'
+        },
+        EffectComposer: {
+            deps: [
+                'Three',
+                'CopyShader'
+            ],
+            exports: 'EffectComposer'
+        },
+        RenderPass: {
+            deps: [
+                'Three'
+            ],
+            exports: 'RenderPass'
+        },
+        MaskPass: {
+            deps: [
+                'Three'
+            ],
+            exports: 'MaskPass'
+        },
+        ShaderPass: {
+            deps: [
+                'Three'
+            ],
+            exports: 'ShaderPass'
+        },
         Viewport: {
             deps: [
                 'Three',
+
+                'CopyShader',
+                'HorizontalBlurShader',
+                'VerticalBlurShader',
+                'EffectComposer',
+                'RenderPass',
+                'MaskPass',
+                'ShaderPass',
                 'OrbitControls'
             ],
             exports: 'Viewport'
@@ -140,7 +191,16 @@ require.config({
         InputView: 'views/NodeViews/Input',
         OutputView: 'views/NodeViews/Output',
         CustomNodeView: 'views/NodeViews/CustomNode',
+
         ThreeCSGNodeView: 'views/NodeViews/ThreeCSG',
+
+        CopyShader: 'lib/Three/CopyShader',
+        HorizontalBlurShader: 'lib/Three/HorizontalBlurShader',
+        VerticalBlurShader: 'lib/Three/VerticalBlurShader',
+        EffectComposer: 'lib/Three/EffectComposer',
+        RenderPass: 'lib/Three/RenderPass',
+        MaskPass: 'lib/Three/MaskPass',
+        ShaderPass: 'lib/Three/ShaderPass',
 
         OrbitControls: 'lib/OrbitControls',
         Viewport: 'lib/Viewport',
@@ -159,9 +219,9 @@ require.config({
         jqueryuicore: '../bower_components/jquery.ui/ui/jquery.ui.core',
         jqueryuimouse: '../bower_components/jquery.ui/ui/jquery.ui.mouse',
         jqueryuiwidget: '../bower_components/jquery.ui/ui/jquery.ui.widget',
-        jquery: '../bower_components/jquery/jquery.min',
-        backbone: '../bower_components/backbone-amd/backbone-min',
-        underscore: '../bower_components/underscore-amd/underscore-min',
+        jquery: '../bower_components/jquery/jquery',
+        backbone: '../bower_components/backbone-amd/backbone',
+        underscore: '../bower_components/underscore-amd/underscore',
     }
 
 });

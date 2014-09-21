@@ -417,6 +417,8 @@ define([  'backbone',
 
     focusWorkspace: function(){
 
+      doBlur = true;
+
       this.$el.find('#workspace_hide').removeClass('leftside');
       this.$el.find('#workspace_hide').addClass('rightside');
 
@@ -431,6 +433,8 @@ define([  'backbone',
     },
 
     focusViewer: function(){
+
+      doBlur = false;
 
       this.$el.find('#workspace_hide').addClass('leftside');
       this.$el.find('#workspace_hide').removeClass('rightside');

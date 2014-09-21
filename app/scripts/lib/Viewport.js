@@ -59,17 +59,19 @@ function init() {
 	window.addEventListener( 'resize', onWindowResize, false );
 
 	// full screen blur
-	// composer = new THREE.EffectComposer( renderer );
-	// composer.addPass( new THREE.RenderPass( scene, camera ) );
+	composer = new THREE.EffectComposer( renderer );
+	composer.addPass( new THREE.RenderPass( scene, camera ) );
 
-	// hblur = new THREE.ShaderPass( THREE.HorizontalBlurShader );
-	// composer.addPass( hblur );
+	THREE.VerticalBlurShader.uniforms.v.value = 1 /  $container.height() ;
+	THREE.HorizontalBlurShader.uniforms.h.value = 1 /  $container.width() ;
 
-	// vblur = new THREE.ShaderPass( THREE.VerticalBlurShader );
-	// // set this shader pass to render to screen so we can see the effects
-	// vblur.renderToScreen = true;
-	// composer.addPass( vblur );
+	hblur = new THREE.ShaderPass( THREE.HorizontalBlurShader );
+	composer.addPass( hblur );
 
+	vblur = new THREE.ShaderPass( THREE.VerticalBlurShader );
+	// set this shader pass to render to screen so we can see the effects
+	vblur.renderToScreen = true;
+	composer.addPass( vblur );
 
 	animate();
 
@@ -161,9 +163,9 @@ function render() {
 
 	controls.update();
 	renderer.render( scene, camera );
-	
+
 	if (doBlur){
-		// composer.render();
+		composer.render();
 	}
 
 }
